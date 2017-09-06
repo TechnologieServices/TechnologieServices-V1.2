@@ -5,7 +5,7 @@
 	"version":"1.0",
 	"sort":0,
   "author":"TechnologieServices",
-  "homepage":"www.technologieservices.fr",
+  "homepage":"www.technologieservices.fr ",
 	"javascriptURL":"js/robuno.js",               //Online functions
   "extensionPort":0, 								            //Network port of extension, 0 for serial port
   "firmware":"",

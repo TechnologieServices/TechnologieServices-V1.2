@@ -5,7 +5,7 @@
   "version":"1.2",
 	"sort":0,										                  //Position in the menu
   "author":"TechnologieServices",
-  "homepage":"www.technologieservices.fr",	
+  "homepage":"www.technologieservices.fr ",	
 	"javascriptURL":"js/technologie-services.js", //Online functions
   "extensionPort":0, 								            //Network port of extension, 0 for serial port
   "firmware":"",
