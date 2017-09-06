@@ -1,0 +1,110 @@
+//Extension descriptor
+{
+	"extensionName":"Robuno",			                //The name showed in the interface (menu and widget)
+	"description":"Contrôle du robot Robuno",			
+	"version":"1.0",
+	"sort":0,
+  "author":"TechnologieServices",
+  "homepage":"www.technologieservices.fr",
+	"javascriptURL":"js/robuno.js",               //Online functions
+  "extensionPort":0, 								            //Network port of extension, 0 for serial port
+  "firmware":"",
+	"blockSpecs": [ 								              //Blocks definition
+		["h","Robuno - générer le code","runArduino"],
+		["-"],
+    ["w", "Déplacer le robot %m.robunoDirection à la vitesse %n",
+    "robunoRun",
+    "en avant",255,
+		{
+      "setup":"",
+      "inc":"#include \"Servo.h\"\n#include \"TSRobunoOnline.h\"\n",
+      "def":"TSRobuno robuno;",
+      "work":"robuno.run({0},{1});\n",
+      "loop":""
+    }],
+    ["w", "Stopper le robot",
+    "robunoStop",
+    0, 
+		{
+      "setup":"",
+      "inc":"#include \"Servo.h\"\n#include \"TSRobunoOnline.h\"\n",
+      "def":"TSRobuno robuno;",
+      "work":"robuno.stop();\n",
+      "loop":""
+    }],
+    ["w", "Mettre %m.robunoOutputPort au niveau %m.digital",
+    "robunoWrite",
+    "la led rouge","HIGH",
+		{
+      "setup":"",
+      "inc":"#include \"Servo.h\"\n#include \"TSRobunoOnline.h\"\n",
+      "def":"TSRobuno robuno;",
+      "work":"robuno.write({0},{1});\n",
+      "loop":""
+    }],
+    ["B",
+    "Lire l'état logique de la moustache %m.robunoSide",
+    "robunoRead",
+    "gauche",
+		{
+      "setup":"",
+      "inc":"#include \"Servo.h\"\n#include \"TSRobunoOnline.h\"\n",
+      "def":"TSRobuno robuno;",
+      "work":"robuno.read({0});\n",
+      "loop":""
+    }],
+    ["R", "Lire la valeur de la LDR %m.robunoSide",
+    "robunoLDR",
+    "gauche",
+		{
+      "setup":"",
+      "inc":"#include \"Servo.h\"\n#include \"TSRobunoOnline.h\"\n",
+      "def":"TSRobuno robuno;",
+      "work":"robuno.ldr_read({0});\n",
+      "loop":""
+    }],
+    ["w", "Passer en mode Servo",
+    "robunoServo",
+    0,
+		{
+      "setup":"robuno.enableServo();\n",
+      "inc":"#include \"Servo.h\"\n#include \"TSRobunoOnline.h\"\n",
+      "def":"TSRobuno robuno;",
+      "work":"",
+      "loop":""
+    }],
+	],
+	"menus": {
+		"digital":["HIGH","LOW"],
+    "robunoOutputPort":[
+			"la led rouge",
+			"la led blanche",
+			"le buzzer",
+			"la broche libre",
+		],
+    "robunoDirection":[
+			"en avant",
+			"en arrière",
+			"à gauche",
+			"à droite",
+		],
+    "robunoSide":[
+			"gauche",
+			"droite",
+		],
+	},
+	"values":{
+		"HIGH":1, "LOW":0,
+    "la led rouge":4,
+    "la led blanche":5,
+    "le buzzer":6,
+    "la broche libre":7,
+    "en avant":0,
+    "en arrière":1,
+    "à gauche":2,
+    "à droite":3,
+    "gauche":2,
+    "droite":3,
+	},
+	"translators":{}
+}
